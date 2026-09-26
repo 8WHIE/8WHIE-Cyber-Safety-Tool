@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+<title>8WHIE | Cyber Safety Tool</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Main Navigation">
+  <div class="brand">8WHIE</div>
+  <ul>
+    <li><a id="nav-checklist" class="active">Safety Checklist</a></li>
+    <li><a id="nav-password">Password Checker</a></li>
+    <li><a id="nav-url">URL / Link Safety</a></li>
+    <li><a id="nav-tips">Security Tips</a></li>
+    <li><a id="nav-settings">Settings</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <p>8WHIE &bull; Created by Aryan Thakur</p>
+  </div>
+</nav>
+
+<main class="content">
+  <section id="checklist-view">
+    <header>
+      <h1>Cyber Safety Checklist</h1>
+      <p>Simple, offline cybersecurity awareness for everyday users. No account, API, or data upload required.</p>
+    </header>
+
+    <div class="card">
+      <div class="score" id="score">0 / 10 completed</div>
+      <div class="progress" role="progressbar" aria-label="Checklist progress"><div class="bar" id="bar"></div></div>
+      <div id="list"></div>
+      <button onclick="allDone()" aria-label="Mark all checklist items complete">Mark all complete</button>
+      <button class="secondary" onclick="resetList()" aria-label="Reset checklist">Reset</button>
+    </div>
+
+    <div class="card">
+      <strong>Stay safer online</strong>
+      <p>Use unique passwords, enable multi-factor authentication, install security updates, check links before opening them, and never share OTPs or recovery codes.</p>
+      <small>For defensive cybersecurity awareness only.</small>
+    </div>
+  </section>
+
+  <section id="password-view" class="hidden">
+    <header>
+      <h1>Password Security Checker</h1>
+      <p>Check the strength of your password. Your password is never stored or transmitted anywhere.</p>
+    </header>
+    <div class="card">
+      <label for="password-input">Enter password to check:</label>
+      <input type="password" id="password-input" placeholder="Type a password...">
+
+      <div id="password-result" style="margin-top: 20px;">
+        <div class="score">Strength: <span id="password-label">None</span></div>
+        <div class="progress" role="progressbar" aria-label="Password strength"><div class="bar" id="password-bar" style="width: 0%;"></div></div>
+        <ul id="password-feedback" style="color: var(--text-muted); padding-left: 20px;">
+          <li>Enter a password to check its strength.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="url-view" class="hidden">
+    <header>
+      <h1>URL / Link Safety</h1>
+      <p>Analyze a link to see if it shows common signs of being suspicious or unsafe.</p>
+    </header>
+    <div class="card">
+      <label for="url-input">Enter URL/Link to check:</label>
+      <input type="url" id="url-input" placeholder="https://example.com">
+      <button id="analyze-url-btn">Analyze Link</button>
+
+      <div id="url-result" style="margin-top: 20px; display: none;">
+        <div class="score">Status: <span id="url-status">Unknown</span></div>
+        <div style="margin: 10px 0;"><strong id="url-domain"></strong></div>
+        <ul id="url-feedback" style="color: var(--text-muted); padding-left: 20px;">
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips-view" class="hidden">
+    <header>
+      <h1>Security Tips</h1>
+      <p>Practical advice to help you stay safe online.</p>
+    </header>
+    <div class="card">
+      <h3>1. Passwords</h3>
+      <p>Never reuse passwords across different sites. Use a password manager to generate and store strong passwords.</p>
+    </div>
+    <div class="card">
+      <h3>2. Multi-Factor Authentication (MFA)</h3>
+      <p>Enable MFA on all critical accounts (email, banking, social media). Use an authenticator app rather than SMS if possible.</p>
+    </div>
+    <div class="card">
+      <h3>3. Phishing Awareness</h3>
+      <p>Always verify the sender's email address. Do not click links in unexpected emails or messages. When in doubt, navigate to the website manually.</p>
+    </div>
+    <div class="card">
+      <h3>4. Software Updates</h3>
+      <p>Keep your operating system, browsers, and applications updated. Enable automatic updates where possible to patch security vulnerabilities quickly.</p>
+    </div>
+  </section>
+
+  <section id="settings-view" class="hidden">
+    <header>
+      <h1>Settings</h1>
+      <p>Manage your application preferences and data.</p>
+    </header>
+    <div class="card">
+      <h3>Clear Application Data</h3>
+      <p>This will remove your saved checklist progress from your browser's local storage.</p>
+      <button id="clear-data-btn" style="background: var(--primary-color);">Clear Saved Data</button>
+    </div>
+  </section>
+
+</main>
+
+<div class="watermark">8WHIE</div>
+
+<script src="js/password.js"></script>
+<script src="js/url.js"></script>
+<script src="js/app.js"></script>
+<script src="js/views.js"></script>
+</body></html>
